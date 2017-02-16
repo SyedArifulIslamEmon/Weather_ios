@@ -8,10 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1CB7CF0950E46DEDEB9CE883 /* Pods_Weather.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE7CB09B751F5F8E419B9F19 /* Pods_Weather.framework */; };
-		1D385BAB1E558419008FBBBD /* sunny.gif in Resources */ = {isa = PBXBuildFile; fileRef = 1D385BA81E558419008FBBBD /* sunny.gif */; };
 		1D385BAC1E558419008FBBBD /* spring.gif in Resources */ = {isa = PBXBuildFile; fileRef = 1D385BA91E558419008FBBBD /* spring.gif */; };
-		1D385BAD1E558419008FBBBD /* rain.gif in Resources */ = {isa = PBXBuildFile; fileRef = 1D385BAA1E558419008FBBBD /* rain.gif */; };
-		1D385BAF1E558437008FBBBD /* cloudy.gif in Resources */ = {isa = PBXBuildFile; fileRef = 1D385BAE1E558437008FBBBD /* cloudy.gif */; };
 		1D385BB11E55845C008FBBBD /* rainy.gif in Resources */ = {isa = PBXBuildFile; fileRef = 1D385BB01E55845C008FBBBD /* rainy.gif */; };
 		1D385BB51E55B17B008FBBBD /* thunder.gif in Resources */ = {isa = PBXBuildFile; fileRef = 1D385BB41E55B17B008FBBBD /* thunder.gif */; };
 		1D385BB71E55B1C7008FBBBD /* sun.gif in Resources */ = {isa = PBXBuildFile; fileRef = 1D385BB61E55B1C7008FBBBD /* sun.gif */; };
@@ -45,6 +42,8 @@
 		1DEEF4701E51C073003713F2 /* WeatherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEEF46F1E51C073003713F2 /* WeatherTests.swift */; };
 		1DEEF47B1E51C073003713F2 /* WeatherUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEEF47A1E51C073003713F2 /* WeatherUITests.swift */; };
 		1DEEF48F1E523154003713F2 /* CityCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEEF48E1E523154003713F2 /* CityCollectionViewCell.swift */; };
+		813A1D3D1E55FC3500F09A74 /* rain1.gif in Resources */ = {isa = PBXBuildFile; fileRef = 813A1D3C1E55FC3500F09A74 /* rain1.gif */; };
+		813A1D3F1E55FD6A00F09A74 /* rain.gif in Resources */ = {isa = PBXBuildFile; fileRef = 813A1D3E1E55FD6A00F09A74 /* rain.gif */; };
 		81E5FE6A1E539BA8003D0C81 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 81E5FE691E539BA8003D0C81 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
@@ -66,10 +65,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		1D385BA81E558419008FBBBD /* sunny.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = sunny.gif; sourceTree = "<group>"; };
 		1D385BA91E558419008FBBBD /* spring.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = spring.gif; sourceTree = "<group>"; };
-		1D385BAA1E558419008FBBBD /* rain.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = rain.gif; sourceTree = "<group>"; };
-		1D385BAE1E558437008FBBBD /* cloudy.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = cloudy.gif; sourceTree = "<group>"; };
 		1D385BB01E55845C008FBBBD /* rainy.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = rainy.gif; sourceTree = "<group>"; };
 		1D385BB41E55B17B008FBBBD /* thunder.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = thunder.gif; sourceTree = "<group>"; };
 		1D385BB61E55B1C7008FBBBD /* sun.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = sun.gif; sourceTree = "<group>"; };
@@ -109,6 +105,8 @@
 		1DEEF47A1E51C073003713F2 /* WeatherUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherUITests.swift; sourceTree = "<group>"; };
 		1DEEF47C1E51C073003713F2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1DEEF48E1E523154003713F2 /* CityCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CityCollectionViewCell.swift; sourceTree = "<group>"; };
+		813A1D3C1E55FC3500F09A74 /* rain1.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = rain1.gif; sourceTree = "<group>"; };
+		813A1D3E1E55FD6A00F09A74 /* rain.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = rain.gif; sourceTree = "<group>"; };
 		81E5FE691E539BA8003D0C81 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AE7CB09B751F5F8E419B9F19 /* Pods_Weather.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Weather.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF591338E7365BE361F7B9CC /* Pods-Weather.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Weather.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Weather/Pods-Weather.debug.xcconfig"; sourceTree = "<group>"; };
@@ -144,13 +142,12 @@
 		1D385BA71E5583CA008FBBBD /* Gif */ = {
 			isa = PBXGroup;
 			children = (
-				1D385BAE1E558437008FBBBD /* cloudy.gif */,
+				813A1D3E1E55FD6A00F09A74 /* rain.gif */,
 				1D385BB01E55845C008FBBBD /* rainy.gif */,
 				1D385BB41E55B17B008FBBBD /* thunder.gif */,
 				1D385BB61E55B1C7008FBBBD /* sun.gif */,
-				1D385BA81E558419008FBBBD /* sunny.gif */,
+				813A1D3C1E55FC3500F09A74 /* rain1.gif */,
 				1D385BA91E558419008FBBBD /* spring.gif */,
-				1D385BAA1E558419008FBBBD /* rain.gif */,
 			);
 			name = Gif;
 			sourceTree = "<group>";
@@ -376,16 +373,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				813A1D3F1E55FD6A00F09A74 /* rain.gif in Resources */,
 				1D385BB11E55845C008FBBBD /* rainy.gif in Resources */,
 				1D385BAC1E558419008FBBBD /* spring.gif in Resources */,
-				1D385BAF1E558437008FBBBD /* cloudy.gif in Resources */,
+				813A1D3D1E55FC3500F09A74 /* rain1.gif in Resources */,
 				1DEEF4651E51C073003713F2 /* LaunchScreen.storyboard in Resources */,
 				1DC0FA9E1E5337960029B2A1 /* storm_raindrops_on_window.mp4 in Resources */,
 				81E5FE6A1E539BA8003D0C81 /* Assets.xcassets in Resources */,
 				1D385BB71E55B1C7008FBBBD /* sun.gif in Resources */,
 				1D385BB51E55B17B008FBBBD /* thunder.gif in Resources */,
-				1D385BAB1E558419008FBBBD /* sunny.gif in Resources */,
-				1D385BAD1E558419008FBBBD /* rain.gif in Resources */,
 				1DEEF45D1E51C072003713F2 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
