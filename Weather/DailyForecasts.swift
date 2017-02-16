@@ -7,29 +7,40 @@
 //
 
 import Foundation
+import ObjectMapper
 
-class DailyForecasts{
+class DailyForecasts: Mappable{
     
     var date : String?
     var epochDate : Int?
     
-    var temperature : [Temperature]?
-    var day : [DayNightIcon]?
-    var night : [DayNightIcon]?
-    
+    var temperature : Temperature?
+    var day : DayNightIcon?
+    var night : DayNightIcon?
+   
     var sources : [String]?
     var mobileLink : String?
     var link : String?
     
-    init(date : String?, epochDate : Int?, temperature : [Temperature]?, day : [DayNightIcon]?, night : [DayNightIcon]?, sources : [String]?, mobileLink : String?, link : String?){
-        
-        self.date = date
-        self.epochDate = epochDate
-        self.temperature = temperature
-        self.day = day
-        self.night = night
-        self.sources = sources
-        self.mobileLink = mobileLink
-        self.link = link
+    required init?(map: Map) {
+        date <- map["Date"]
+        epochDate <- map["EpochDate"]
+        temperature <- map["temperature"]
+        day <- map["Day"]
+        night <- map["Night"]
+        sources <- map["Sources"]
+        mobileLink <- map["MobileLink"]
+        link <- map["Link"]
+    }
+    
+    func mapping(map: Map) {
+        date <- map["Date"]
+        epochDate <- map["EpochDate"]
+        temperature <- map["Temperature"]
+        day <- map["Day"]
+        night <- map["Night"]
+        sources <- map["Sources"]
+        mobileLink <- map["MobileLink"]
+        link <- map["Link"]
     }
 }

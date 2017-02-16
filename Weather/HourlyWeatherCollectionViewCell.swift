@@ -14,6 +14,4 @@ class HourlyWeatherCollectionViewCell: UICollectionViewCell {
     @IBOutlet var lblHourTemperatureOfDay: UILabel!
     
     @IBOutlet var imgHourWeather: UIImageView!
-    
-    
 }

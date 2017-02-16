@@ -7,15 +7,20 @@
 //
 
 import Foundation
+import ObjectMapper
 
-class Temperature{
+class Temperature: Mappable{
 
-    var maximumTemperature: [MinMaxTemperature]?
-    var minimumTemperature: [MinMaxTemperature]?
-
-    init(maximumTemperature: [MinMaxTemperature]?, minimumTemperature: [MinMaxTemperature]?){
+    var maximumTemperature: MinMaxTemperature?
+    var minimumTemperature: MinMaxTemperature?
     
-        self.maximumTemperature = maximumTemperature
-        self.minimumTemperature = minimumTemperature
+    required init?(map: Map) {
+        maximumTemperature <- map["Maximum"]
+        minimumTemperature <- map["Minimum"]
+    }
+    
+    func mapping(map: Map) {
+        maximumTemperature <- map["Maximum"]
+        minimumTemperature <- map["Minimum"]
     }
 }

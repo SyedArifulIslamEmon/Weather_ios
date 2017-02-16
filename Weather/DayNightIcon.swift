@@ -7,15 +7,20 @@
 //
 
 import Foundation
+import ObjectMapper
 
-class DayNightIcon{
+class DayNightIcon: Mappable{
     
     var icon: Int?
     var iconPhrase: String?
     
-    init(icon: Int?, iconPhrase: String?){
-        
-        self.icon = icon
-        self.iconPhrase = iconPhrase
+    required init?(map: Map) {
+        icon <- map["Icon"]
+        iconPhrase <- map["IconPhrase"]
+    }
+    
+    func mapping(map: Map) {
+        icon <- map["Icon"]
+        iconPhrase <- map["IconPhrase"]
     }
 }

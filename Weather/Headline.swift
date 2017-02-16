@@ -7,8 +7,10 @@
 //
 
 import Foundation
+import Alamofire
+import ObjectMapper
 
-class Headline{
+class Headline: Mappable{
 
     var effectiveDate : String?
     var effectiveEpochDate : Int?
@@ -20,15 +22,28 @@ class Headline{
     var mobileLink : String?
     var link : String?
 
-    init(effectiveDate : String?, effectiveEpochDate : Int?, severity : String?, text : String?, category : String?, endDate : String?, endEpochDate : Int?, mobileLink : String?, link : String?){
-        self.effectiveDate = effectiveDate
-        self.effectiveEpochDate = effectiveEpochDate
-        self.severity = severity
-        self.text = text
-        self.category = category
-        self.endDate = endDate
-        self.endEpochDate = endEpochDate
-        self.mobileLink = mobileLink
-        self.link = link
+    required init?(map: Map) {
+        effectiveDate <- map["EffectiveDate"]
+        effectiveEpochDate <- map["EffectiveEpochDate"]
+        severity <- map["Severity"]
+        text <- map["Text"]
+        category <- map["EffectiveDate"]
+        endDate <- map["EndDate"]
+        endEpochDate <- map["EndEpochDate"]
+        mobileLink <- map["MobileLink"]
+        link <- map["Link"]
+
+    }
+    
+    func mapping(map: Map) {
+        effectiveDate <- map["EffectiveDate"]
+        effectiveEpochDate <- map["EffectiveEpochDate"]
+        severity <- map["Severity"]
+        text <- map["Text"]
+        category <- map["EffectiveDate"]
+        endDate <- map["EndDate"]
+        endEpochDate <- map["EndEpochDate"]
+        mobileLink <- map["MobileLink"]
+        link <- map["Link"]
     }
 }

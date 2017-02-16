@@ -1,4 +1,111 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1" systemVersion="11A491" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <elements/>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="11759" systemVersion="16C67" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="DailyForecastsCD" representedClassName="DailyForecastsCD" syncable="YES">
+        <attribute name="date" optional="YES" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="hyper.remoteKey" value="Date"/>
+            </userInfo>
+        </attribute>
+        <attribute name="epochDate" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES">
+            <userInfo>
+                <entry key="hyper.remoteKey" value="EpochDate"/>
+            </userInfo>
+        </attribute>
+        <attribute name="link" optional="YES" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="hyper.remoteKey" value="Link"/>
+            </userInfo>
+        </attribute>
+        <attribute name="mobileLink" optional="YES" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="hyper.remoteKey" value="MobileLink"/>
+            </userInfo>
+        </attribute>
+        <attribute name="sources" optional="YES" attributeType="Binary" syncable="YES">
+            <userInfo>
+                <entry key="hyper.remoteKey" value="Sources"/>
+            </userInfo>
+        </attribute>
+        <relationship name="day" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DayCD" inverseName="dailyForecasts" inverseEntity="DayCD" syncable="YES"/>
+        <relationship name="night" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="NightCD" inverseName="dailyForecasts" inverseEntity="NightCD" syncable="YES"/>
+        <relationship name="temperature" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TemperatureCD" inverseName="dailyForecasts" inverseEntity="TemperatureCD" syncable="YES"/>
+    </entity>
+    <entity name="DayCD" representedClassName="DayCD" syncable="YES">
+        <attribute name="icon" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES">
+            <userInfo>
+                <entry key="hyper.remoteKey" value="Icon"/>
+            </userInfo>
+        </attribute>
+        <attribute name="iconPhrase" optional="YES" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="hyper.remoteKey" value="IconPhrase"/>
+            </userInfo>
+        </attribute>
+        <relationship name="dailyForecasts" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DailyForecastsCD" inverseName="day" inverseEntity="DailyForecastsCD" syncable="YES"/>
+    </entity>
+    <entity name="MaximumCD" representedClassName="MaximumCD" syncable="YES">
+        <attribute name="unit" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES">
+            <userInfo>
+                <entry key="hyper.remoteKey" value="unit"/>
+            </userInfo>
+        </attribute>
+        <attribute name="unitType" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES">
+            <userInfo>
+                <entry key="hyper.remoteKey" value="value"/>
+            </userInfo>
+        </attribute>
+        <attribute name="value" optional="YES" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="hyper.remoteKey" value="value"/>
+            </userInfo>
+        </attribute>
+        <relationship name="temperature" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TemperatureCD" inverseName="maximum" inverseEntity="TemperatureCD" syncable="YES"/>
+    </entity>
+    <entity name="MinimumCD" representedClassName="MinimumCD" syncable="YES">
+        <attribute name="unit" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES">
+            <userInfo>
+                <entry key="hyper.remoteKey" value="value"/>
+            </userInfo>
+        </attribute>
+        <attribute name="unitType" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES">
+            <userInfo>
+                <entry key="hyper.remoteKey" value="value"/>
+            </userInfo>
+        </attribute>
+        <attribute name="value" optional="YES" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="hyper.remoteKey" value="value"/>
+            </userInfo>
+        </attribute>
+        <relationship name="temperature" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TemperatureCD" inverseName="minimum" inverseEntity="TemperatureCD" syncable="YES"/>
+        <userInfo>
+            <entry key="hyper.remoteKey" value="value"/>
+        </userInfo>
+    </entity>
+    <entity name="NightCD" representedClassName="NightCD" syncable="YES">
+        <attribute name="icon" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES">
+            <userInfo>
+                <entry key="hyper.remoteKey" value="value"/>
+            </userInfo>
+        </attribute>
+        <attribute name="iconPhrase" optional="YES" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="hyper.remoteKey" value="value"/>
+            </userInfo>
+        </attribute>
+        <relationship name="dailyForecasts" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DailyForecastsCD" inverseName="night" inverseEntity="DailyForecastsCD" syncable="YES"/>
+    </entity>
+    <entity name="TemperatureCD" representedClassName="TemperatureCD" syncable="YES">
+        <relationship name="dailyForecasts" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DailyForecastsCD" inverseName="temperature" inverseEntity="DailyForecastsCD" syncable="YES"/>
+        <relationship name="maximum" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="MaximumCD" inverseName="temperature" inverseEntity="MaximumCD" syncable="YES"/>
+        <relationship name="minimum" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="MinimumCD" inverseName="temperature" inverseEntity="MinimumCD" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="DailyForecastsCD" positionX="-74" positionY="54" width="128" height="163"/>
+        <element name="TemperatureCD" positionX="-110" positionY="-90" width="128" height="88"/>
+        <element name="MinimumCD" positionX="115" positionY="-18" width="128" height="103"/>
+        <element name="MaximumCD" positionX="115" positionY="-135" width="128" height="103"/>
+        <element name="DayCD" positionX="-288" positionY="29" width="128" height="88"/>
+        <element name="NightCD" positionX="-288" positionY="188" width="128" height="88"/>
+    </elements>
 </model>

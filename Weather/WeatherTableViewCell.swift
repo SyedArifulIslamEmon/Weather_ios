@@ -13,19 +13,15 @@ class WeatherTableViewCell: UITableViewCell {
     @IBOutlet var lblWeekDays: UILabel!
     
     @IBOutlet var imgWeekDays: UIImageView!
-    @IBOutlet var lblHighTemperatureWeekDays: UILabel!
     
+    @IBOutlet var lblHighTemperatureWeekDays: UILabel!
     @IBOutlet var lblLowTemperatureWeekDays: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
-
 }

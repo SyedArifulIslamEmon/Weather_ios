@@ -7,17 +7,23 @@
 //
 
 import Foundation
+import ObjectMapper
 
-class MinMaxTemperature{
+class MinMaxTemperature: Mappable{
     
     var value: Float?
     var unit: String?
     var unitType: Int?
     
-    init(value: Float?, unit: String?, unitType: Int?){
-        
-        self.value = value
-        self.unit = unit
-        self.unitType = unitType
+    required init?(map: Map) {
+        value <- map["Value"]
+        unit <- map["Unit"]
+        unitType <- map["UnitType"]
+    }
+    
+    func mapping(map: Map) {
+        value <- map["Value"]
+        unit <- map["Unit"]
+        unitType <- map["UnitType"]
     }
 }
