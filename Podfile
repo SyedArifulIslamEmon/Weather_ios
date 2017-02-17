@@ -7,5 +7,5 @@ target ‘Weather’ do
     pod 'AlamofireSwiftyJSON'
     pod 'ObjectMapper', '~> 2.2'
     pod 'SwiftGifOrigin', '~> 1.6.1'
-    pod 'Sync', '~> 2'
+    pod 'AlamofireCoreData'
 end

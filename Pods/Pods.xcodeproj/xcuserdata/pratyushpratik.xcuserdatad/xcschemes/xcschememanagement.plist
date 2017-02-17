@@ -8,76 +8,46 @@
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>1</integer>
+		</dict>
+		<key>AlamofireCoreData.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
 		</dict>
 		<key>AlamofireSwiftyJSON.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>2</integer>
 		</dict>
-		<key>DATAStack.xcscheme</key>
+		<key>Groot.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>7</integer>
-		</dict>
-		<key>NVActivityIndicatorView.xcscheme</key>
-		<dict>
-			<key>orderHint</key>
-			<integer>6</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
 		<key>ObjectMapper.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>3</integer>
 		</dict>
 		<key>Pods-Weather.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>4</integer>
-		</dict>
-		<key>SYNCPropertyMapper.xcscheme</key>
-		<dict>
-			<key>orderHint</key>
-			<integer>10</integer>
 		</dict>
 		<key>SwiftGifOrigin.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>8</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
 		<key>SwiftyJSON.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>5</integer>
-		</dict>
-		<key>Sync.xcscheme</key>
-		<dict>
-			<key>orderHint</key>
-			<integer>9</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>14B527F385853E0D1B4C4E57452F5ED0</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>3EDFE4052B5DE7D509935AC0774CB135</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>58453A61E675108963269128522C1229</key>
+		<key>485CAAFFEE0174E5122F68416450B9A1</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -87,12 +57,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>6894581197138B9EBD1B00B5F84AE246</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>6AB5436C4058F7903B0B7B0F81F998AF</key>
+		<key>6DA8BA4712042D75FE4B8E0879D22ABE</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -102,12 +67,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>A90883222D6DC876C5A7D31772430B12</key>
+		<key>B43918AB915242B851ABEFB5D70BE0AD</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>B43918AB915242B851ABEFB5D70BE0AD</key>
+		<key>C08680ECA428890526D8FE05049DD4D6</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -117,12 +82,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>C78830FFF562149B4B693AB9DB8D3DF5</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>DC5013A7C1FB749EB1C1CEE70B1DD804</key>
+		<key>F78105E85C2D3A022A9660F5BD1A0FB1</key>
 		<dict>
 			<key>primary</key>
 			<true/>

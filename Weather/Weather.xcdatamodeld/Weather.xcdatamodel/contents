@@ -28,7 +28,7 @@
         </attribute>
         <relationship name="day" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DayCD" inverseName="dailyForecasts" inverseEntity="DayCD" syncable="YES"/>
         <relationship name="night" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="NightCD" inverseName="dailyForecasts" inverseEntity="NightCD" syncable="YES"/>
-        <relationship name="temperature" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TemperatureCD" inverseName="dailyForecasts" inverseEntity="TemperatureCD" syncable="YES"/>
+        <relationship name="weather" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="WeatherCD" inverseName="dailyforecasts" inverseEntity="WeatherCD" syncable="YES"/>
     </entity>
     <entity name="DayCD" representedClassName="DayCD" syncable="YES">
         <attribute name="icon" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES">
@@ -42,6 +42,18 @@
             </userInfo>
         </attribute>
         <relationship name="dailyForecasts" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DailyForecastsCD" inverseName="day" inverseEntity="DailyForecastsCD" syncable="YES"/>
+    </entity>
+    <entity name="HeadlineCD" representedClassName="HeadlineCD" syncable="YES">
+        <attribute name="category" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="effectiveDate" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="effectiveEpochDate" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="endDate" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="endEpochDate" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="link" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="mobileLink" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="severity" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="weather" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="WeatherCD" inverseName="headline" inverseEntity="WeatherCD" syncable="YES"/>
     </entity>
     <entity name="MaximumCD" representedClassName="MaximumCD" syncable="YES">
         <attribute name="unit" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES">
@@ -59,7 +71,7 @@
                 <entry key="hyper.remoteKey" value="value"/>
             </userInfo>
         </attribute>
-        <relationship name="temperature" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TemperatureCD" inverseName="maximum" inverseEntity="TemperatureCD" syncable="YES"/>
+        <relationship name="temperature" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TemperatureCD" syncable="YES"/>
     </entity>
     <entity name="MinimumCD" representedClassName="MinimumCD" syncable="YES">
         <attribute name="unit" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES">
@@ -77,10 +89,7 @@
                 <entry key="hyper.remoteKey" value="value"/>
             </userInfo>
         </attribute>
-        <relationship name="temperature" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TemperatureCD" inverseName="minimum" inverseEntity="TemperatureCD" syncable="YES"/>
-        <userInfo>
-            <entry key="hyper.remoteKey" value="value"/>
-        </userInfo>
+        <relationship name="temperature" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TemperatureCD" syncable="YES"/>
     </entity>
     <entity name="NightCD" representedClassName="NightCD" syncable="YES">
         <attribute name="icon" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES">
@@ -96,16 +105,24 @@
         <relationship name="dailyForecasts" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DailyForecastsCD" inverseName="night" inverseEntity="DailyForecastsCD" syncable="YES"/>
     </entity>
     <entity name="TemperatureCD" representedClassName="TemperatureCD" syncable="YES">
-        <relationship name="dailyForecasts" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DailyForecastsCD" inverseName="temperature" inverseEntity="DailyForecastsCD" syncable="YES"/>
-        <relationship name="maximum" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="MaximumCD" inverseName="temperature" inverseEntity="MaximumCD" syncable="YES"/>
-        <relationship name="minimum" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="MinimumCD" inverseName="temperature" inverseEntity="MinimumCD" syncable="YES"/>
+        <attribute name="max" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="min" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <userInfo>
+            <entry key="hyper.remoteKey" value="Temperature"/>
+        </userInfo>
+    </entity>
+    <entity name="WeatherCD" representedClassName="WeatherCD" syncable="YES">
+        <relationship name="dailyforecasts" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DailyForecastsCD" inverseName="weather" inverseEntity="DailyForecastsCD" syncable="YES"/>
+        <relationship name="headline" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="HeadlineCD" inverseName="weather" inverseEntity="HeadlineCD" syncable="YES"/>
     </entity>
     <elements>
-        <element name="DailyForecastsCD" positionX="-74" positionY="54" width="128" height="163"/>
-        <element name="TemperatureCD" positionX="-110" positionY="-90" width="128" height="88"/>
-        <element name="MinimumCD" positionX="115" positionY="-18" width="128" height="103"/>
-        <element name="MaximumCD" positionX="115" positionY="-135" width="128" height="103"/>
-        <element name="DayCD" positionX="-288" positionY="29" width="128" height="88"/>
-        <element name="NightCD" positionX="-288" positionY="188" width="128" height="88"/>
+        <element name="DailyForecastsCD" positionX="-81" positionY="-288" width="128" height="163"/>
+        <element name="DayCD" positionX="-261" positionY="-376" width="128" height="88"/>
+        <element name="HeadlineCD" positionX="-92" positionY="27" width="128" height="195"/>
+        <element name="MaximumCD" positionX="124" positionY="-225" width="128" height="103"/>
+        <element name="MinimumCD" positionX="126" positionY="-81" width="128" height="103"/>
+        <element name="NightCD" positionX="-281" positionY="-261" width="128" height="88"/>
+        <element name="TemperatureCD" positionX="-90" positionY="-79" width="128" height="73"/>
+        <element name="WeatherCD" positionX="-389" positionY="-117" width="128" height="73"/>
     </elements>
 </model>

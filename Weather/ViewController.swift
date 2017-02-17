@@ -6,23 +6,25 @@ import AVKit
 import ObjectMapper
 import SwiftGifOrigin
 import CoreData
-import Sync
+import AlamofireCoreData
 
 class ViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource, UICollectionViewDelegateFlowLayout,UIScrollViewDelegate{
     
-    var counter : Int?
+    
+//    let appdelegate = UIApplication.shared.delegate as! AppDelegate
+    
     let gifs = [UIImage.gif(name: "rain"), UIImage.gif(name: "sun"), UIImage.gif(name: "thunder"), UIImage.gif(name: "spring"), UIImage.gif(name: "rainy")]
     
     @IBOutlet var pageControl: UIPageControl!
     @IBOutlet var cityCollectionViewOultet: UICollectionView!
     
     var player: AVPlayer?
+    
     var forcast:jSONData?
-    var itemIndex: Int = 0
+    
     var videoFile: String?
     
-    var videoArray: [String]?
-    
+    //var weatherCD: WeatherCD? = WeatherCD()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,18 +32,15 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
         cityCollectionViewOultet.showsHorizontalScrollIndicator = false
     
         let videoURL: NSURL = Bundle.main.url(forResource: "storm_raindrops_on_window", withExtension: "mp4")! as NSURL
-        
         player = AVPlayer(url: videoURL as URL)
         player?.actionAtItemEnd = .none
         player?.isMuted = true
-        
         let playerLayer = AVPlayerLayer(player: player)
         playerLayer.videoGravity = AVLayerVideoGravityResizeAspectFill
         playerLayer.zPosition = -1
         playerLayer.frame = view.frame
         view.layer.addSublayer(playerLayer)
         player?.play()
-        
         NotificationCenter.default.addObserver(self,selector: #selector(ViewController.loopVideo),name: NSNotification.Name.AVPlayerItemDidPlayToEndTime,object: nil)
 
         cityCollectionViewOultet.delegate = self
@@ -51,13 +50,85 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
             do {
                 let json : Any! = try JSONSerialization.jsonObject(with: response.data!, options: JSONSerialization.ReadingOptions.mutableContainers)
                 self.forcast = Mapper<jSONData>().map(JSONObject: json)
- 
                 self.cityCollectionViewOultet.reloadData()
+                
+                for index in 0..<(self.forcast?.dailyForecasts?.count ?? 0){
+                    self.updating(index: index)
+                }
+                    self.fetching()
+//                let appDelegate = UIApplication.shared.delegate as! AppDelegate
+//                let context = appDelegate.persistentContainer.viewContext
+//                let fetchRequest =  NSFetchRequest<NSFetchRequestResult>(entityName: "WeatherCD")
+//                
+//                do{
+//                    let results = try context.fetch(fetchRequest)
+//                    
+//                    for result in results as! [NSManagedObject]
+//                    {
+//                        if let minimum = result.value(forKey: "headline") as? String{
+//                            print(minimum)
+//                        }
+//                    }
+//                
+//                
+//                }
+//                catch let error as NSError{
+//                    print("Unresolved error \(error), \(error.userInfo)")
+//                }
+//                
             }
             catch {
                 return
             }
         }
+        
+//                let appDelegate = UIApplication.shared.delegate as! AppDelegate
+//                let context = appDelegate.persistentContainer.viewContext
+//                let entity =  NSEntityDescription.entity(forEntityName: "WeatherCD", in:context)
+//                let tempData = NSManagedObject(entity: entity!,insertInto: context)
+//                print("up")
+//                print("\(self.forcast?.dailyForecasts?[1].temperature!.maximumTemperature!.value!)")
+//                print("down")
+//                
+//                //                        tempData.setValue(self.Response!.mydailyForecasts![4].mytemperature!.myminimumTemperature!.myvalue ?? 0.0, forKey: "minimum")
+//                //                        tempData.setValue(self.Response!.mydailyForecasts![4].mytemperature!.mymaximumTemperature!.myvalue ?? 0.0 , forKey: "maximum")
+//                do{
+//                    try context.save()
+//                    print("saved")
+//                }
+//                catch
+//                {
+//                    //process error
+//                    print("error")
+//                }
+
+                
+                
+           
+        
+//        Alamofire.request("http://dataservice.accuweather.com/forecasts/v1/daily/5day/202350?apikey=Z7NpVINNJ8xBAGTtrPVSYZPnYAlAAXjJ")
+//            .responseInsert(context: appdelegate.persistentContainer.viewContext, type: WeatherCD.self) { response in
+//                switch response.result {
+//                case let .success(weatherCD):
+//                    print(weatherCD)
+//                    break
+//
+//                case .failure: break
+//                    // handle error
+//                }
+//        }
+        
+//        Alamofire.request("http://dataservice.accuweather.com/forecasts/v1/daily/5day/202350?apikey=Z7NpVINNJ8xBAGTtrPVSYZPnYAlAAXjJ").responseInsert(context: appdelegate.persistentContainer.viewContext, type: DailyForecastsCD.self) { response in
+//                switch response.result {
+//                case let .success(dailyForecastsCD):
+//                    print(dailyForecastsCD)
+//                    break
+//        
+//                case .failure: break
+//                    // handle error
+//                }
+//        }
+        
     }
     
     
@@ -155,6 +226,84 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         if let indexPath = cityCollectionViewOultet.indexPathsForVisibleItems.first {
             pageControl.currentPage = indexPath.row
+        }
+    }
+    
+    func fetching(){
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "TemperatureCD")
+        do {
+            let results =
+                try context.fetch(fetchRequest)
+            print( results.count)
+            for result in results as! [NSManagedObject]
+            {
+                if let minimum = result.value(forKey: "min") as? Float
+                {
+                    print("minimum \(minimum)")
+                }
+//                if let maximum = result.value(forKey: "maximum") as? Float
+//                {
+//                    print("maximum \(maximum)")
+//                }
+//                if let dayPhrase = result.value(forKey: "day") as? String
+//                {
+//                    print("day phrase \(dayPhrase)")
+//                }
+//                if let nightPhrase = result.value(forKey: "night") as? String
+//                {
+//                    print("day phrase \(nightPhrase)")
+//                }
+//                if let severity = result.value(forKey: "severity") as? Int
+//                {
+//                    print("severity \(severity)")
+//                }
+//                if let day = result.value(forKey: "date") as? String
+//                {
+//                    print("date \(day) \n")
+//                }
+            }
+        } catch let error as NSError {
+            print("Could not fetch \(error), \(error.userInfo)")
+        }
+    }
+    
+    func updating(index : Int)
+    {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        
+        let entity =  NSEntityDescription.entity(forEntityName: "TemperatureCD",in:context)
+        
+        let tempData = NSManagedObject(entity: entity!, insertInto: context)
+        
+        tempData.setValue(self.forcast?.dailyForecasts?[index].temperature?.minimumTemperature?.value ?? 0, forKey: "min")
+//        tempData.setValue(self.forcast?.dailyForecasts?[index].temperature?.maximumTemperature?.value ?? 0 , forKey: "maximum")
+        
+        
+//        tempData.setValue(self.forcast?.dailyForecasts?[index].day?.iconPhrase ?? "" , forKey: "day")
+//        
+//        tempData.setValue(self.forcast?.dailyForecasts?[index].night?.iconPhrase ?? "" , forKey: "night")
+//        
+//        let day1 = getDayOfWeek(today : (self.forcast?.dailyForecasts?[index].date ?? "") )
+//        tempData.setValue(day1, forKey: "date")
+        
+        //tempData.setValue(self.forcast!.headline!.severity ?? 0, forKey: "severity")
+        
+        do{
+            try context.save()
+            print("\n saved")
+            print("\(self.forcast?.dailyForecasts?[index].temperature?.minimumTemperature?.value ?? 0)")
+//            print("\(self.forcast?.dailyForecasts?[index].temperature?.minimumTemperature?.value ?? 0)")
+//            print("\(self.forcast?.dailyForecasts?[index].night?.iconPhrase ?? "")")
+//            print("\(self.forcast?.dailyForecasts?[index].day?.iconPhrase ?? "")")
+//            //print("\(self.forcast?.headline!.severity!)")
+//            print("\(getDayOfWeek(today : (self.forcast?.dailyForecasts?[index].date ?? "")))")
+        }
+        catch
+        {
+            print("error")
         }
     }
 }
